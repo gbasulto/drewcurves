@@ -5,6 +5,19 @@
 
 using namespace Rcpp;
 
+// compute_fourier_series
+NumericMatrix compute_fourier_series(NumericMatrix mat, NumericVector t, int type);
+RcppExport SEXP drewcurves_compute_fourier_series(SEXP matSEXP, SEXP tSEXP, SEXP typeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type mat(matSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type t(tSEXP);
+    Rcpp::traits::input_parameter< int >::type type(typeSEXP);
+    rcpp_result_gen = Rcpp::wrap(compute_fourier_series(mat, t, type));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_hello_world
 List rcpp_hello_world();
 RcppExport SEXP drewcurves_rcpp_hello_world() {
@@ -17,6 +30,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"drewcurves_compute_fourier_series", (DL_FUNC) &drewcurves_compute_fourier_series, 3},
     {"drewcurves_rcpp_hello_world", (DL_FUNC) &drewcurves_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
