@@ -13,7 +13,3 @@ compute_fourier_series <- function(mat, t, type) {
     .Call(drewcurves_compute_fourier_series, mat, t, type)
 }
 
-rcpp_hello_world <- function() {
-    .Call(drewcurves_rcpp_hello_world)
-}
-

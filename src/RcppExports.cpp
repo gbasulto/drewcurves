@@ -18,20 +18,12 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP drewcurves_rcpp_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
+
+RcppExport SEXP drewcurves_rcpp_hello_world();
 
 static const R_CallMethodDef CallEntries[] = {
     {"drewcurves_compute_fourier_series", (DL_FUNC) &drewcurves_compute_fourier_series, 3},
-    {"drewcurves_rcpp_hello_world", (DL_FUNC) &drewcurves_rcpp_hello_world, 0},
+    {"drewcurves_rcpp_hello_world",       (DL_FUNC) &drewcurves_rcpp_hello_world,       0},
     {NULL, NULL, 0}
 };
 
