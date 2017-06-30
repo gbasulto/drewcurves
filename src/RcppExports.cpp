@@ -19,11 +19,8 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP drewcurves_rcpp_hello_world();
-
 static const R_CallMethodDef CallEntries[] = {
     {"drewcurves_compute_fourier_series", (DL_FUNC) &drewcurves_compute_fourier_series, 3},
-    {"drewcurves_rcpp_hello_world",       (DL_FUNC) &drewcurves_rcpp_hello_world,       0},
     {NULL, NULL, 0}
 };
 
