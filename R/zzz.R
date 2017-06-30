@@ -1,6 +1,6 @@
 
-#' @useDynLib drewcurves
-#' @importFrom Rcpp sourceCpp
+#' @useDynLib drewcurves, .registration = TRUE 
+#' @importFrom Rcpp evalCpp
 NULL
 
 .onUnload <- function (libpath) {
