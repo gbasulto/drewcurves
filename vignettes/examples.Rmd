@@ -27,12 +27,85 @@ library(andrews)
 library(tidyr)
 library(dplyr)
 
+## Trying to do everything withing a function
+
+drewcurves <- function (df, type = 1, clr = NULL, resolution = 100, minmax_scaling = TRUE) {
+  
+}
+
+str(iris)
+
+iris[, names(iris)[5]]
+head(iris[, "Species"])
+head(iris[, -"Species"])
+
+select(iris, Species)
+
+## ------------------------------------------
+
 X <- iris[, -5]
 Y <- apply(X, 2, function(x) (x - min(x))/(max(x) - min(x)))
 t <- seq(-pi, pi, len = 100)
 group <- iris$Species
+
+minmax1 <- function(X) {
+  apply(X, 2, function (x) (x - min(x))/(max(x) - min(x)))
+}
+
+minmax2 <- function(X) {
+  apply(X, 2, function (x) {
+    minx <- min(x)
+    maxx <- max(x)
+    range <- maxx - minx
+    (x - minx)/range
+    })
+}
   
-  
+minmax3 <- function(X) {
+  f_temp <- function(x) {
+    b <- min(x)
+    c <- max(x) - b
+    (x - b)/c
+  }
+  mutate_all(X, f_temp)
+}
+
+minmax4 <- function(X) {
+  colmin <- apply(X, 2, min)
+  colmax <- apply(X, 2, max)
+  colrange <- colmax - colmin
+  sweep(sweep(X, 2, colmin), 2, colrange, "/")
+}
+
+minmax5 <- function(X) {
+  X <- as.matrix(X)
+  colmin <- colMins(X)
+  colmax <- colMaxs(X)
+  colrange <- colmax - colmin
+  sweep(sweep(X, 2, colmin), 2, colrange, "/")
+}
+
+library(matrixStats)
+
+head(Y)  
+head(minmax1(W))  
+head(minmax2(W))  
+head(minmax3(W))  
+head(minmax4(W))  
+head(minmax5(W))  
+
+summary(minmax3(W))  
+summary(minmax3(Y))  
+
+rbenchmark::benchmark(
+  head(minmax1(W)),  
+  head(minmax2(W)),  
+  head(minmax3(W)),  
+  head(minmax4(W)),  
+  head(minmax5(W))  
+)
+
+
 andrews(iris, clr = 5, ymax = 2.5)
 
 
