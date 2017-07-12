@@ -3,7 +3,7 @@
 ##'
 ##' Normalize columns by substracting its minimum and dividing by the
 ##' length of its range. The resulting columns will be between zero
-##' and one.
+##' and one. It does not affect non-numeric columns.
 ##' @param X Vector, matriz or dataframe. 
 ##' @return An object of the same type and dimensions as X.
 ##' @examples
@@ -15,6 +15,8 @@ minmax_normalization <- function (X) {
 
     ## Normalize vector
     if (is.vector(X)) {
+        ## If the vector is not numeric, it does nothing.
+        if (is.numeric(X)) return (X)
         min_X <- min(X)
         range <- max(X) - min_X
         return ((X - min_X)/range)
