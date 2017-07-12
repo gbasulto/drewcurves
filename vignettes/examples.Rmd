@@ -37,7 +37,6 @@ str(iris)
 
 iris[, names(iris)[5]]
 head(iris[, "Species"])
-head(iris[, -"Species"])
 
 select(iris, Species)
 
@@ -88,6 +87,7 @@ minmax5 <- function(X) {
 library(matrixStats)
 
 head(Y)  
+head(minmax_normalization(W))  
 head(minmax1(W))  
 head(minmax2(W))  
 head(minmax3(W))  
@@ -98,6 +98,7 @@ summary(minmax3(W))
 summary(minmax3(Y))  
 
 rbenchmark::benchmark(
+  head(minmax_normalization(W)),  
   head(minmax1(W)),  
   head(minmax2(W)),  
   head(minmax3(W)),  
