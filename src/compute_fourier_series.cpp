@@ -42,3 +42,4 @@ NumericMatrix compute_fourier_series(NumericMatrix mat,
   return out;
 }
 
+
