@@ -13,38 +13,40 @@
 ##' @export
 minmax_normalization <- function (X) {
 
-    ## Normalize vector
-    if (is.vector(X)) {
-                                        # If the vector is not
-                                        # numeric, it does nothing.
-        if (!is.numeric(X)) return (X)
-                                        # Substract min and divide by
-                                        # range.
-        min_X <- min(X)
-        range <- max(X) - min_X
-        normalized <- (X - min_X)/range
-
-                                        # Return vector with
-                                        # attributes
-        return (list(normalized = normalized,
-                     min = min_X,
-                     range_length = range))
-    }
     
-    ## Normalize matrix or dataframe by column
-    apply(X, 2, minmax_normalization)
+
+    ## ## Normalize vector
+    ## if (is.vector(X)) {
+    ##                                     # If the vector is not
+    ##                                     # numeric, it does nothing.
+    ##     if (!is.numeric(X)) return (X)
+    ##                                     # Substract min and divide by
+    ##                                     # range.
+    ##     min_X <- min(X)
+    ##     range <- max(X) - min_X
+    ##     normalized <- (X - min_X)/range
+
+    ##                                     # Return vector with
+    ##                                     # attributes
+    ##     return (list(normalized = normalized,
+    ##                  min = min_X,
+    ##                  range_length = range))
+    ## }
+    
+    ## ## Normalize matrix or dataframe by column
+    ## apply(X, 2, minmax_normalization)
 }
 
 
-out <- minmax_normalization(iris[, -5])
+## out <- minmax_normalization(iris[, -5])
 
-colmins <- unlist(lapply(out, function(x) x$min))
-lengths <- unlist(lapply(out, function(x) x$range_length))
-out <- as.data.frame(lapply(out, function(x) x$normalized))
+## colmins <- unlist(lapply(out, function(x) x$min))
+## lengths <- unlist(lapply(out, function(x) x$range_length))
+## out <- as.data.frame(lapply(out, function(x) x$normalized))
 
-attr(out, "minimum") <- colmins
-attr(out, "range_lenght") <- lengths
+## attr(out, "minimum") <- colmins
+## attr(out, "range_lenght") <- lengths
 
-minmax_normalization(iris[1:5, -5])
+## minmax_normalization(iris[1:5, -5])
 
-head(iris)
+## head(iris)

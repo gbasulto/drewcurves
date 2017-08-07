@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // compute_fourier_series
 NumericMatrix compute_fourier_series(NumericMatrix mat, NumericVector t, int type);
-RcppExport SEXP drewcurves_compute_fourier_series(SEXP matSEXP, SEXP tSEXP, SEXP typeSEXP) {
+RcppExport SEXP _drewcurves_compute_fourier_series(SEXP matSEXP, SEXP tSEXP, SEXP typeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,9 +18,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// minmax
+List minmax(const NumericMatrix& mat);
+RcppExport SEXP _drewcurves_minmax(SEXP matSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type mat(matSEXP);
+    rcpp_result_gen = Rcpp::wrap(minmax(mat));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"drewcurves_compute_fourier_series", (DL_FUNC) &drewcurves_compute_fourier_series, 3},
+    {"_drewcurves_compute_fourier_series", (DL_FUNC) &_drewcurves_compute_fourier_series, 3},
+    {"_drewcurves_minmax", (DL_FUNC) &_drewcurves_minmax, 1},
     {NULL, NULL, 0}
 };
 

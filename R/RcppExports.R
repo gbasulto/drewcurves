@@ -10,6 +10,10 @@
 #' @return A nxm matrix where each row represents a curve.
 #' @export
 compute_fourier_series <- function(mat, t, type) {
-    .Call(drewcurves_compute_fourier_series, mat, t, type)
+    .Call(`_drewcurves_compute_fourier_series`, mat, t, type)
+}
+
+minmax <- function(mat) {
+    .Call(`_drewcurves_minmax`, mat)
 }
 
