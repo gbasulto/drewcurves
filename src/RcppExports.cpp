@@ -19,7 +19,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // minmax
-List minmax(const NumericMatrix& mat);
+NumericMatrix minmax(const NumericMatrix& mat);
 RcppExport SEXP _drewcurves_minmax(SEXP matSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
