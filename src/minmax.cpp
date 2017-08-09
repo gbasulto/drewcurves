@@ -3,6 +3,7 @@ using namespace Rcpp;
 
 //--------------------------------------------------------------------
 
+/*
 //' Minmax Normalization
 //'
 //' For each column of a matrix, it substracts its minimum and divide
@@ -13,10 +14,22 @@ using namespace Rcpp;
 //' @param mat A numeric matrix.
 //' @return The normalized matrix, with a vector with ' column
 //' minimums and a vector with the column range lengths as attributes.
-
-// @example
-
-
+//' @author Guillermo Basulto-Elias
+//' @example
+//' mat <- matrix(c(0, 1, 2,
+//'                 3, 4, 5,
+//'                 3, 2, 1),
+//'                 nrow = 3, byrow = TRUE)
+//'   drewcurves:::minmax(mat)
+//'   
+//'   \donotrun{
+//'     mat <- matrix(c(0, pi, 1, 2,
+//'                     3, pi, 4, 5,
+//'                     3, pi, 2, 1),
+//'                     nrow = 3, byrow = TRUE)
+//'     drewcurves:::minmax(mat)
+//'   }
+*/
 // [[Rcpp::export]]
 NumericMatrix minmax(const NumericMatrix & mat)
 {

@@ -13,16 +13,6 @@ compute_fourier_series <- function(mat, t, type) {
     .Call(`_drewcurves_compute_fourier_series`, mat, t, type)
 }
 
-#' Minmax Normalization
-#'
-#' For each column of a matrix, it substracts its minimum and divide
-#' by the length of its range
-#'
-#' An error is returned if there is at least one column whose values
-#' are all the same.
-#' @param mat A numeric matrix.
-#' @return The normalized matrix, with a vector with ' column
-#' minimums and a vector with the column range lengths as attributes.
 minmax <- function(mat) {
     .Call(`_drewcurves_minmax`, mat)
 }
