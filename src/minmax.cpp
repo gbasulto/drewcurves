@@ -13,6 +13,10 @@ using namespace Rcpp;
 //' @param mat A numeric matrix.
 //' @return The normalized matrix, with a vector with ' column
 //' minimums and a vector with the column range lengths as attributes.
+
+// @example
+
+
 // [[Rcpp::export]]
 NumericMatrix minmax(const NumericMatrix & mat)
 {
