@@ -28,7 +28,7 @@ mat <- matrix(c(0, 1, 2,
                 nrow = 3, byrow = TRUE)
   drewcurves:::minmax(mat)
   
-  \\donotrun{
+\dontrun{
     mat <- matrix(c(0, pi, 1, 2,
                     3, pi, 4, 5,
                     3, pi, 2, 1),
