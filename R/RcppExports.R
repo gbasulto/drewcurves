@@ -32,11 +32,11 @@ compute_fourier_series <- function(mat, t, type) {
 #'   drewcurves:::minmax(mat)
 #'   
 #' \dontrun{
-#'     mat <- matrix(c(0, pi, 1, 2,
-#'                     3, pi, 4, 5,
-#'                     3, pi, 2, 1),
-#'                     nrow = 3, byrow = TRUE)
-#'     drewcurves:::minmax(mat)
+#' mat <- matrix(c(0, pi, 1, 2,
+#'                 3, pi, 4, 5,
+#'                 3, pi, 2, 1),
+#'                 nrow = 3, byrow = TRUE)
+#' drewcurves:::minmax(mat)
 #'   }
 minmax <- function(mat) {
     .Call(`_drewcurves_minmax`, mat)
