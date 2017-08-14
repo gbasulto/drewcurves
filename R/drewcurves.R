@@ -36,7 +36,6 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
 
     ## Convert the rest of the variables to 
     df <- as.matrix(df)
-    print(head(df))
 
     ## Scale if required.
     if (minmax_scaling) df <- minmax(df)
