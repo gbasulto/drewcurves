@@ -29,24 +29,16 @@ library(dplyr)
 
 ## Trying to do everything withing a function
 
-drewcurves <- function (df, type = 1, group = NULL, resolution = 100, minmax_scaling = TRUE) {
 
-  var_names <- colnames(df)
-  
-  if (is.null(clr)) {
-    grp <- df[, group]
-    df <- df[, -group]
-  }
-  
-  df <- as.matrix(df)
-  
-  if (minmax_scaling) df <- minmax_scaling()
-  
-  t <- seq(-pi, pi, length.out = resolution)
-  fourier_series <- compute_fourier_series(df, t = t, type = type)
-  
-  
-}
+
+head(iris)
+
+
+drewcurves(iris, group = 5)
+drewcurves(iris, group = 5, xlim = c(0, 2*pi))
+drewcurves(iris, group = 5) + ylim(c(-1, 3))
+drewcurves(iris[, c(sample(4), 5)], group = 5) 
+
 
 str(iris)
 
@@ -81,30 +73,6 @@ Z %>%
 
 dim(Z)
 
-mat <- matrix(c(0, 1, 2,
-                3, 4, 5,
-                3, 2, 1),
-              nrow = 3, byrow = TRUE)
-drewcurves:::minmax(mat)
-drewcurves::minmax(mat)
-
-
-
-mat <- matrix(c(0,   1,  2, 
-                -1,  1,  5,
-                0.5, 4,  6,
-                0.2, pi, 7), 
-                4, 3, byrow = T)
-drewcurves:::minmax(mat)
-
-? drewcurves:::minmax
-
-mat <- matrix(c(0,   1,  2, 1, 1, 
-                -1,  1,  5, 1, 0,
-                0.5, 4,  6, 1, 1,
-                0.2, pi, 7, 1, 0), 
-                4, 5, byrow = T)
-drewcurves:::minmax(mat)
 
 ```
 
