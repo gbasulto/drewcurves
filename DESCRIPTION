@@ -1,6 +1,6 @@
 Package: drewcurves
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Produce fast Andrews plots with 'ggplot2'.
 Version: 1.0
 Date: 2017-06-30
 Author: Guillermo Basulto-Elias
