@@ -53,9 +53,14 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
         gather(key, value, -t)
 
     ## Add group if it exists.
-    out <- out %>%
-        mutate(group = rep(grp, each = resolution))
+    if (!is.null(group)) {
+        out <- out %>%
+            mutate(group = rep(grp, each = resolution))
+    }
 
+    ## Return dataframe instead of plot?
+    if (return_dataframe) return (out)
+    
     out <- out %>%
         ggplot(aes(t, value, group = key)) + 
         geom_line(aes(color = group))
