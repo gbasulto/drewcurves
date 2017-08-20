@@ -1,6 +1,6 @@
 ---
 title: "Manual"
-author: "Vignette Author"
+author: "Guillermo Basulto-Elias"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -28,6 +28,12 @@ library(tidyr)
 library(dplyr)
 
 ## Trying to do everything withing a function
+
+
+drewcurves(iris, group = 5)
+drewcurves(iris, group = 5, xlim = c(0, 2*pi))
+drewcurves(iris, group = 5) + ylim(c(-1, 3))
+drewcurves(iris[, c(sample(4), 5)], group = 5) 
 
 
 
