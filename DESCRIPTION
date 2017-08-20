@@ -1,12 +1,11 @@
 Package: drewcurves
 Type: Package
-Title: Produce fast Andrews plots with 'ggplot2'.
+Title: Produce fast Andrews plots with 'ggplot2'
 Version: 1.0
-Date: 2017-06-30
+Date: 2017-08-20
 Author: Guillermo Basulto-Elias
 Maintainer: Guillermo Basulto-Elias <guillermobasulto@gmail.com>
-Description: One paragraph description of what the package does as one
-        or more full sentences.
+Description: Produces Andrews plot with 'ggplot2'. Heavy computations are speed up with 'Rcpp'.
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.11),
     dplyr,
