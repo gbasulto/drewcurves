@@ -46,23 +46,20 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
     
 
     ## Create 'long format' dataframe with no group (at this point).
-    out <-
-        fourier_series %>%
-        as.data.frame() %>%
-        mutate(t = t) %>%
-        gather(key, value, -t)
+    out <- as.data.frame(fourier_series) # Cast to dataframe
+    out <- mutate(out, t = t)            # Add time column
+    out <- gather(out, key, value, -t)   # Cast to long format df.
 
     ## Add group if it exists.
     if (!is.null(group)) {
-        out <- out %>%
-            mutate(group = rep(grp, each = resolution))
+        out <- mutate(out, group = rep(grp, each = resolution))
     }
 
     ## Return dataframe instead of plot?
     if (return_dataframe) return (out)
     
-    out <- out %>%
-        ggplot(aes(t, value, group = key)) + 
+    out <- ggplot(data = out,
+               aes(t, value, group = key)) + 
         geom_line(aes(color = group))
     
     out
