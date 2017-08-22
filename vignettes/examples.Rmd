@@ -31,6 +31,7 @@ library(dplyr)
 
 
 drewcurves(iris, group = 5)
+drewcurves(iris, group = 5, return = TRUE)
 drewcurves(iris, group = 5, xlim = c(0, 2*pi))
 drewcurves(iris, group = 5) + ylim(c(-1, 3))
 drewcurves(iris[, c(sample(4), 5)], group = 5) 
