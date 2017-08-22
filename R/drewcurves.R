@@ -59,10 +59,19 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
 
     ## Return dataframe instead of plot?
     if (return_dataframe) return (out)
-    
+
+    ## Generate NULL plot.
     out <- ggplot2::ggplot(data = out,
-               ggplot2::aes(t, value, group = key)) + 
-        ggplot2::geom_line(ggplot2::aes(color = group))
+                           ggplot2::aes(t, value, group = key))
+    
+    ## If no group column is given, it returns a plot with no color
+    ## coding.
+    if (is.null(group)) {
+        out <- out + ggplot2::geom_line()
+    } else {
+        out <- out + ggplot2::geom_line(ggplot2::aes(color = group))
+        }
+    
     
     out
 }
