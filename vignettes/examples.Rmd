@@ -23,7 +23,6 @@ data(iris)
 
 library(ggplot2)
 library(drewcurves)
-library(andrews)
 library(tidyr)
 library(dplyr)
 
