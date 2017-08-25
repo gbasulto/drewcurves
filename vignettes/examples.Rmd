@@ -17,6 +17,43 @@ Vignettes are long form documentation commonly included in packages. Because the
 
 ## Example
 
+```{r}
+
+data(iris)
+
+library(ggplot2)
+library(drewcurves)
+library(andrews)
+library(tidyr)
+library(dplyr)
+
+## Show first elements of dataset
+head(iris)
+
+## Andrews plot with no group.
+drewcurves(iris[, -5])
+
+## Andrews plot with species as group.
+drewcurves(iris, group = 5)
+
+## Return dataframe instead of plot.
+drewcurves(iris, group = 5, return_dataframe  = TRUE) %>%
+    head()
+
+## Modify the x limits (as long as the interval length is 2pi).
+drewcurves(iris, group = 5, xlim = c(0, 2*pi))
+
+## Add other elements from ggplot to the plot
+drewcurves(iris, group = 5) +
+    ylim(c(-1, 3)) +
+    ggtitle("Andrews plot", sub = "This is a subtitle") +
+    theme_bw() +
+    scale_colour_brewer(palette = "Set1")
+
+```
+
+Temp text.
+
 ```{r, eval = FALSE}
 
 data(iris)
@@ -27,13 +64,30 @@ library(andrews)
 library(tidyr)
 library(dplyr)
 
-## Trying to do everything withing a function
+## Show first elements of dataset
+head(iris)
 
+## Andrews plot with no group.
+drewcurves(iris[, -5])
 
+## Andrews plot with species as group.
 drewcurves(iris, group = 5)
-drewcurves(iris, group = 5, return = TRUE)
+
+## Return dataframe instead of plot.
+drewcurves(iris, group = 5, return_dataframe  = TRUE) %>%
+    head()
+
+## Modify the x limits (as long as the interval length is 2pi).
 drewcurves(iris, group = 5, xlim = c(0, 2*pi))
-drewcurves(iris, group = 5) + ylim(c(-1, 3))
+
+## Add other elements from ggplot to the plot
+drewcurves(iris, group = 5) +
+    ylim(c(-1, 3)) +
+    ggtitle("Andrews plot", sub = "This is a subtitle") +
+    theme_bw() +
+    scale_colour_brewer(palette = "Set1")
+
+
 drewcurves(iris[, c(sample(4), 5)], group = 5) 
 
 

@@ -72,6 +72,5 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
         out <- out + ggplot2::geom_line(ggplot2::aes(color = group))
         }
     
-    
     out
 }
