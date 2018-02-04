@@ -29,7 +29,7 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
     var_names <- colnames(df)
 
     ## Read df (which could be a matrix) as dataframe
-    df <- tbl_df(df)
+    df <- dplyr::tbl_df(df)
     
     ## Remove group variable if it is provided
     if (!is.null(group)) {
@@ -67,7 +67,7 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
         new_names <- names(out)
         cat("Group name = ", group_name, "\n")
         new_names[length(new_names)] <- group_name
-        out <- setNames(out, new_names)
+        out <- stats::setNames(out, new_names)
     }
 
     ## Return dataframe instead of plot?
