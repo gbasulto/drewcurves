@@ -28,9 +28,17 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
     ## Extract column names
     var_names <- colnames(df)
 
+    ## Read df (which could be a matrix) as dataframe
+    df <- tbl_df(df)
+    
     ## Remove group variable if it is provided
     if (!is.null(group)) {
-        grp <- df[, group]
+        grp <- df[[group]]              # As vector
+        if (is.character(group)) {
+            ## Change group to numeric if necessary.
+            group <- which(var_names == group) 
+        }
+        grp_name <- names(var_names[group])
         df <- df[, -group]
     }
 
@@ -44,17 +52,22 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
     t <- seq(xlim[1], xlim[2], length.out = resolution)
     fourier_series <- compute_fourier_series(df, t = t, type = type)
     
-
+    
     ## Create 'long format' dataframe with no group (at this point).
     key <- value <- NULL                      # Set to null kill NOTE
     out <- as.data.frame(fourier_series) # Cast to dataframe
     out <- dplyr::mutate(out, t = t)     # Add time column
     out <- tidyr::gather(out, key, value, -t)  # Cast to long format
-                                               # dataframe.
+                                        # dataframe.
 
     ## Add group if it exists.
     if (!is.null(group)) {
+        group_name <- var_names[group]
         out <- dplyr::mutate(out, group = rep(grp, each = resolution))
+        new_names <- names(out)
+        cat("Group name = ", group_name, "\n")
+        new_names[length(new_names)] <- group_name
+        out <- setNames(out, new_names)
     }
 
     ## Return dataframe instead of plot?
@@ -69,7 +82,8 @@ drewcurves <- function (df, type = 1, group = NULL, resolution = 100,
     if (is.null(group)) {
         out <- out + ggplot2::geom_line()
     } else {
-        out <- out + ggplot2::geom_line(ggplot2::aes(color = group))
+        out <- out +
+            ggplot2::geom_line(ggplot2::aes_string(color = group_name))
         }
     
     out
